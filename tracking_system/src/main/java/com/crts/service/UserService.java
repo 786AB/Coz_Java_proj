@@ -1,7 +1,4 @@
-
 package com.crts.service;
-
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,17 +12,26 @@ public class UserService {
 	@Autowired
 	private UserRepo userRepo;
 
-	public boolean getuser(String userName) {
+	public boolean getuser(String userName, String password) {
 		boolean getres = false;
-		UserEntity entity = this.userRepo.getByuName(userName);
-		if(userName.equals(entity.getuName()))
-		{
-			getres =true;
+		try {
+			System.out.println(userName);
+			System.out.println(password);
+			UserEntity entity = this.userRepo.getByuName(userName);
+System.out.println("====================");
+			System.out.println(entity.getuName());
+			System.out.println(entity.getuPassword());
+
+			if (userName.equals(entity.getuName()) && password.equals(entity.getuPassword())) {
+				getres = true;
+			} else {
+				getres = false;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		else
-		{
-			getres =true;
-		}
-		 return getres;
+		return getres;
+
 	}
 }

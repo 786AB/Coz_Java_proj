@@ -1,11 +1,72 @@
+
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8" />
-	<title>Document</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="./css/loginstyle.css">
+
+<title>Hello, world!</title>
 </head>
 <body>
-	
-	dsasdas
+	<div class="container mt-5">
+		<div class="d-flex justify-content-center">
+			<div class="card my-auto">
+				<div class="card-header">
+					<img id="profile-img" class="profile-imgcard"
+						src="/images/Cozentus Logo.png" />
+				</div>
+
+				<div class="card-body mt-3">
+					<img id="profile-img" class="profile-img-card"
+						src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+
+					<form>
+						<div class="input-group form-group">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+							<input type="text" class="form-control" placeholder="Username">
+						</div>
+						<div class="input-group form-group mt-3">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+							<input type="password" class="form-control"
+								placeholder="Password">
+						</div>
+
+						<div class="row align-items-center remember mt-3">
+							<input type="checkbox">Remember Me
+						</div>
+						<div class="form-group mt-2">
+							<button type="reset" class="btn btn-warning" style="width: 40%">Reset</button>
+							<button type="submit" class="btn btn-success" style="width: 40%">Login</button>
+						</div>
+					</form>
+				</div>
+
+				<div class="card-footer">
+					<div class="d-flex justify-content-center links">
+						<a href="#">Forgot your password?</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+		crossorigin="anonymous"></script>
 </body>
 </html>
