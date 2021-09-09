@@ -46,6 +46,16 @@
                                         th:field="*{Department Code}" required="required">
                                 </div>
                             </div>
+                            
+                               <div class="form-group row">
+                                <label for="name" class="col-sm-3 col-form-label">Parent Department Code
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="Last Name"
+                                        placeholder="Enter your parent dept code" name="Parent Department Code"
+                                        th:field="*{Parent DC}" required="required">
+                                </div>
+                            </div>
 
                             <div class="form-group row">
                                 <label for="name" class="col-sm-3 col-form-label">Department Name
@@ -56,15 +66,7 @@
                                         th:field="*{Department Name}" required="required">
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="name" class="col-sm-3 col-form-label">Parent Department Code
-                                </label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="Last Name"
-                                        placeholder="Enter your parent dept code" name="Parent Department Code"
-                                        th:field="*{Parent DC}" required="required">
-                                </div>
-                            </div>
+                         
 
                                  <div class="dropdown">
                                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
