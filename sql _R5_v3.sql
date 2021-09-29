@@ -5,16 +5,13 @@ CREATE TABLE `user_entity` (
   `is_user_active` tinyint(1) NOT NULL,
   `user_first_name` varchar(25) DEFAULT NULL,
   `user_last_name` varchar(25) DEFAULT NULL,
-  `user_password` varchar(20) DEFAULT NULL,
+  `user_password` varchar(250) DEFAULT NULL,
   `user_email` varchar(25) DEFAULT NULL,
   `username` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_email_UNIQUE` (`user_email`),
   UNIQUE KEY `username_UNIQUE` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-
-
 
 
 
@@ -55,7 +52,6 @@ CREATE TABLE `user_dept` (
 
 
 
-
 CREATE TABLE `requests_entity` (
   `request_id` int NOT NULL AUTO_INCREMENT,
   `created_by` int DEFAULT NULL,
@@ -72,6 +68,8 @@ CREATE TABLE `requests_entity` (
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
+
+
 CREATE TABLE `comments_entity` (
   `comments_id` int NOT NULL AUTO_INCREMENT,
   `comments_desc` varchar(250) DEFAULT NULL,
@@ -81,7 +79,7 @@ CREATE TABLE `comments_entity` (
   PRIMARY KEY (`comments_id`),
   KEY `FK9wqxwbusadv5oyja6g23vj52p` (`request_number`),
   CONSTRAINT `FK9wqxwbusadv5oyja6g23vj52p` FOREIGN KEY (`request_number`) REFERENCES `requests_entity` (`request_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 
@@ -98,16 +96,16 @@ CREATE TABLE `status_entity` (
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
+
 CREATE TABLE `audit_log` (
   `audit_id` int NOT NULL AUTO_INCREMENT,
   `Change_type` varchar(45) NOT NULL,
   `Change_type_id` int NOT NULL,
-  `Audit_desc` varchar(45) NOT NULL,
+  `Audit_desc` varchar(255) NOT NULL,
   `Created_Date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `Created_By` int NOT NULL,
   PRIMARY KEY (`audit_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 
