@@ -1,0 +1,31 @@
+
+
+CREATE DEFINER=`root`@`localhost` TRIGGER `comments_entity_BEFORE_INSERT` BEFORE INSERT ON `comments_entity` FOR EACH ROW BEGIN
+
+    INSERT INTO requesttrackingsystemdb.audit_log ( Change_type, Change_type_id, Audit_desc, Created_By)
+	VALUES ( 'Comment Modify', new.request_number,  new.comments_desc , new.created_by);    
+    
+END
+
+
+
+
+
+CREATE DEFINER=`root`@`localhost` TRIGGER `requests_entity_BEFORE_UPDATE` BEFORE UPDATE ON `requests_entity` FOR EACH ROW BEGIN
+DECLARE temp varchar(255);
+set temp = 'Request Update';
+	IF old.request_title != new.request_title OR old.request_description != new.request_description THEN SET temp = 'Request Modify';
+	ELSEIF old.request_number != new.request_number THEN SET temp = 'Request No Update';
+	ELSEIF old.request_dept != new.request_dept THEN SET temp = 'Dept Modify';
+    ELSEIF old.assigned_to != new.assigned_to THEN SET temp = 'User Modify';
+    END IF;
+    INSERT INTO requesttrackingsystemdb.audit_log ( Change_type, Change_type_id, Audit_desc, Created_By)
+	VALUES ( temp, old.request_id,  old.request_title, old.created_by );
+END
+
+
+
+CREATE DEFINER=`root`@`localhost` TRIGGER `status_entity_BEFORE_INSERT` BEFORE INSERT ON `status_entity` FOR EACH ROW BEGIN
+    INSERT INTO requesttrackingsystemdb.audit_log ( Change_type, Change_type_id, Audit_desc, Created_By)
+	VALUES ( 'Status Modify', new.request_number,  new.status_desc , new.created_by); 
+END
