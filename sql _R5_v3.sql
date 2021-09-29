@@ -11,7 +11,13 @@ CREATE TABLE `user_entity` (
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_email_UNIQUE` (`user_email`),
   UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+
+
+
 
 
 CREATE TABLE `dept_entity` (
@@ -27,7 +33,10 @@ CREATE TABLE `dept_entity` (
   UNIQUE KEY `dept_code_UNIQUE` (`dept_code`),
   KEY `created_By` (`created_By`),
   CONSTRAINT `dept_entity_ibfk_1` FOREIGN KEY (`created_By`) REFERENCES `user_entity` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
 
 CREATE TABLE `user_dept` (
   `user_dept_id` int NOT NULL AUTO_INCREMENT,
@@ -41,7 +50,9 @@ CREATE TABLE `user_dept` (
   KEY `Dept_id` (`Dept_id`),
   CONSTRAINT `user_dept_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user_entity` (`user_id`),
   CONSTRAINT `user_dept_ibfk_2` FOREIGN KEY (`Dept_id`) REFERENCES `dept_entity` (`Dept_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
 
 
 
@@ -55,10 +66,22 @@ CREATE TABLE `requests_entity` (
   `request_description` varchar(180) DEFAULT NULL,
   `initial_comments` varchar(250) DEFAULT NULL,
   `request_title` varchar(20) DEFAULT NULL,
+  `severity` int NOT NULL,
+  `piority` int NOT NULL,
   PRIMARY KEY (`request_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
+CREATE TABLE `comments_entity` (
+  `comments_id` int NOT NULL AUTO_INCREMENT,
+  `comments_desc` varchar(250) DEFAULT NULL,
+  `created_by` int DEFAULT NULL,
+  `created_date` datetime(6) DEFAULT NULL,
+  `request_number` int DEFAULT NULL,
+  PRIMARY KEY (`comments_id`),
+  KEY `FK9wqxwbusadv5oyja6g23vj52p` (`request_number`),
+  CONSTRAINT `FK9wqxwbusadv5oyja6g23vj52p` FOREIGN KEY (`request_number`) REFERENCES `requests_entity` (`request_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 
@@ -72,23 +95,18 @@ CREATE TABLE `status_entity` (
   PRIMARY KEY (`status_id`),
   KEY `FKmx649kw1itpsuofi3a5b3v3uc` (`request_number`),
   CONSTRAINT `FKmx649kw1itpsuofi3a5b3v3uc` FOREIGN KEY (`request_number`) REFERENCES `requests_entity` (`request_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
-CREATE TABLE `comments_entity` (
-  `comments_id` int NOT NULL AUTO_INCREMENT,
-  `comments_desc` varchar(250) DEFAULT NULL,
-  `created_by` int DEFAULT NULL,
-  `created_date` datetime(6) DEFAULT NULL,
-  `request_number` int DEFAULT NULL,
-  PRIMARY KEY (`comments_id`),
-  KEY `FK9wqxwbusadv5oyja6g23vj52p` (`request_number`),
-  CONSTRAINT `FK9wqxwbusadv5oyja6g23vj52p` FOREIGN KEY (`request_number`) REFERENCES `requests_entity` (`request_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-
-
-
+CREATE TABLE `audit_log` (
+  `audit_id` int NOT NULL AUTO_INCREMENT,
+  `Change_type` varchar(45) NOT NULL,
+  `Change_type_id` int NOT NULL,
+  `Audit_desc` varchar(45) NOT NULL,
+  `Created_Date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `Created_By` int NOT NULL,
+  PRIMARY KEY (`audit_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 
